@@ -3,7 +3,7 @@
 |-----|     基于 ubuntu/jre
 |-----|     docker-entrypoint.sh  /usr/local/bin
 |-----|
-[     ] <==> ||||||| <- 宿主主机
+[-----] <==> ||||||| <- 宿主主机
           挂载宿主主机目录
   /|\
 HDA_RELEASE_HOME 应用程序根目录
