@@ -4,8 +4,8 @@
 |-----|     docker-entrypoint.sh  /usr/local/bin
 |-----|
 [     ] <==> ||||||| <- 宿主主机
-  /|\        挂载宿主主机目录
-   |
+          挂载宿主主机目录
+  /|\
 HDA_RELEASE_HOME 应用程序根目录
 
 HDA_RELEASE_HOME 目录结构
@@ -20,4 +20,5 @@ HDA_RELEASE_HOME 目录结构
  olerbin              Dockerfile 构建镜像时设置，PATH
  docker-entrypoint.sh Dockerfile 构建时COPY到镜像的 /usr/local/bin 目录下。
                       容器实例化是执行CMD ["all_start"]
+
 
