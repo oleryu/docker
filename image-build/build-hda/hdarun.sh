@@ -27,4 +27,4 @@ docker run -it -d \
     -w ${CONTAINER_WORKDIR} ${IMAGE_NAME}
 #   all_start
 -----------------------------------------------------------------
-如果指定 all_start CMD 或其他 CMD，将替换默认的 CMD,
+如果指定 all_start CMD 或其他 CMD，将替换默认的 CMD
