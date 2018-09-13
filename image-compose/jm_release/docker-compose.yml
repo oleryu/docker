@@ -12,7 +12,7 @@ services:
     tty: true
     container_name: jm_server
     hostname: jmsrvs
-    domainname: hengpu-keji.com
+    domainname: oleryu.xyz
     networks:
       - jmnet
     ports:
@@ -43,8 +43,8 @@ services:
     image: ubuntu/zoo-cluster:1.0
     tty: true
     container_name: jm_zk-cluster
-    hostname: jmzk
-    domainname: hengpu-keji.com
+    hostname: jm-zk
+    domainname: oleryu.xyz
     networks:
       - jmnet
     ports:
@@ -61,7 +61,7 @@ services:
     tty: true
     container_name: jm_mqserver
     hostname: jm-mqserver
-    domainname: hengpu-keji.com
+    domainname: oleryu.xyz
     networks:
       - jmnet
     ports:
