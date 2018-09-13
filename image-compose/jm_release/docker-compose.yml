@@ -1,0 +1,79 @@
+###############################################################################################
+#
+# oleryu@aliyun.com 2018-07-27
+#
+###############################################################################################
+
+version: '3'
+services:
+#----------------------------------------------------------------
+  app-srvs:
+    image: ubuntu/jm:1.0
+    tty: true
+    container_name: jm_server
+    hostname: jmsrvs
+    domainname: hengpu-keji.com
+    networks:
+      - jmnet
+    ports:
+      - "9881:8881"
+      - "9885:8885"
+      - "9082:8082"
+    extra_hosts:
+      - "trdev01:172.10.0.1"
+    environment:
+      - "JM_RELEASE_HOME=/opt/app_release"
+    volumes:
+      - /opt/image-volume/jm_release:/opt/app_release
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+      - /opt/image-volume/jm_release/trading-all/trading-ci:/opt/trading-ci
+    links:
+      - zk-cluster
+      - zk-cluster:zk-cluster
+      - mq-server
+      - mq-server:mq-server
+    depends_on:
+      - zk-cluster
+      - mq-server
+    working_dir: /opt/app_release
+    command: all_start.sh
+#-----------------------------------------------------------------
+  zk-cluster:
+    image: ubuntu/zoo-cluster:1.0
+    tty: true
+    container_name: jm_zk-cluster
+    hostname: jmzk
+    domainname: hengpu-keji.com
+    networks:
+      - jmnet
+    ports:
+      - "9090:9090"
+      - "9080:8080"
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /opt/image-volume/zk_release/jmzk:/opt/zk_release
+    working_dir: /opt/zk_release
+    command: all_start.sh
+#-----------------------------------------------------------------
+  mq-server:
+    image: ubuntu/mq:1.0
+    tty: true
+    container_name: jm_mqserver
+    hostname: jm-mqserver
+    domainname: hengpu-keji.com
+    networks:
+      - jmnet
+    ports:
+      - "9880:8080"
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /opt/image-volume/mq_release/jm:/opt/mq_release
+      - /opt/image-volume/mq_release/jm/logs:/root/logs
+      - /opt/image-volume/mq_release/jm/store:/root/store
+    working_dir: /opt/mq_release
+    command: all_start.sh
+networks:
+  jmnet:
+    external:
+      name: jm_net
