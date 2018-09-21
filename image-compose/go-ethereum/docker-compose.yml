@@ -1,0 +1,34 @@
+###############################################################################################
+#
+# @dev.olery.xyz 2018-09-21
+#
+###############################################################################################
+
+version: '3'
+services:
+#----------------------------------------------------------------
+  app-srvs:
+    image: ubuntu/eth:latest
+    tty: true
+    container_name: eth_server
+    hostname: eth-server
+    domainname: hengpu-keji.com
+    networks:
+      - eth-net
+    ports:
+      - "8545:8545"
+    extra_hosts:
+      - "trdev01:172.10.0.1"
+    environment:
+      - "JM_RELEASE_HOME=/opt/app_release"
+    volumes:
+      - /opt/image-volume/eth_release:/opt/app_release
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+    working_dir: /opt/app_release
+    command: all_start.sh
+#-----------------------------------------------------------------
+networks:
+  eth-net:
+    external:
+      name: eth_net
