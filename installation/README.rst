@@ -57,3 +57,6 @@ Note: No package docker-ce available.
 参考：
 https://docs.docker.com/install/linux/docker-ce/centos/
 
+
+docker.oleryu.xyz
+docker.oleryu.cn
