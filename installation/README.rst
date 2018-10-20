@@ -14,3 +14,7 @@ Installation guide
 配置一个稳定（stable）的仓库
 仓库配置会保存到/etc/yum.repos.d/docker-ce.repo文件中
 更新Yum安装的相关Docke软件包
+
+
+1. change the first line of setup.py to point to the directory of your installation of python 2.*
+2. run setup.py
