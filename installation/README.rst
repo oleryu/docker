@@ -25,8 +25,8 @@ Note: No package docker-ce available.
 
     # systemctl stop docker
 其他兼容命令
-# service docker start
-Redirecting to /bin/systemctl start docker.service
+    # service docker start
+    Redirecting to /bin/systemctl start docker.service
 设置随系统启动
 #systemctl enable docker.service
 
