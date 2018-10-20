@@ -15,12 +15,31 @@ Installation guide
 2. 配置一个稳定（stable）的仓库，仓库配置会保存到/etc/yum.repos.d/docker-ce.repo文件中。
 3. 更新Yum安装的相关Docke软件包
 
-No package docker-ce available.
+Note: No package docker-ce available.
     #yum install epel-release
 
 =================
 启动服务
 =================
+    # systemctl start docker
+
+    # systemctl stop docker
+其他兼容命令
+# service docker start
+Redirecting to /bin/systemctl start docker.service
+设置随系统启动
+#systemctl enable docker.service
 
     #service docker start
+=================
+卸载 Docker
+=================
+
+    #yum list installed | grep docker
+    ...
+
+    未完待续...
+
+参考：
+https://docs.docker.com/install/linux/docker-ce/centos/
 
